@@ -52,13 +52,17 @@ The predicted B-values are written to two files:
 * rescaled.pdb (it contains the predicted rescaled B-values)  
 
 Note that rescaled.pdb is only created if the standard deviation and <br>
-mean B-value of the query structure are in the range [2,100].
+mean B-value of the query structure are in the range [2, 100].
 
 ## **Example 2 – protein structure no crystal contacts (i.e., cryo-EM model)**
 
 **_STEP 1: Predict the B values by running the R script "GDV_Bval.r"_**  
 
 > source("GDV_Bval.r")
+
+or  
+
+> Rscript GDV_Bval.r 
 
 This example does not consider symmetry contacts (i.e., the cryo- EM model).  
 The script “GDV_Bval.r” reads the file 6SK0.pdb, which is already in the EXAMPLE2 folder.  
@@ -68,4 +72,4 @@ The predicted B-values are written to two files:
 * rescaled.pdb (it contains the predicted rescaled B-values)
    
 Note that rescaled.pdb is only created if the standard deviation and  
-mean B-value of the query structure are in the range [2,100].  
+mean B-value of the query structure are in the range [2, 100].  
