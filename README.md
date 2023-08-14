@@ -3,6 +3,8 @@ The components of the graphlet degree vector, which describes the complexity<br>
 of the wiring of a given atom, can be used in a multiple linear regression model <br>
 to predict atomic displacement parameters in protein structures. <br>
 For details see:<br>
+By default Bilogucal unit 1 from pdb file is selected. Otherwise, all chains,  
+asymmetric unit is selected!!! (to je za dodelat!!!!!)
 
 ### **Prerequisites for running R scripts**  
 
@@ -73,3 +75,15 @@ The predicted B-values are written to two files:
    
 Note that rescaled.pdb is only created if the standard deviation and  
 mean B-value of the query structure are in the range [2, 100].  
+
+## **Example 3 -  asymmetric unit / not  Biological Assembly 1 data**
+This script is a slightly modified version of “Example 2”.  
+The only difference is that the script reads all the atoms of the protein   
+in the PDB (asymmetric unit) file rather than in Biological Assembly 1.   
+By default, the analysis was performed using the Biological Assembly 1 data.
+
+> source("GDV_Bval_no_BIO.r")
+
+or  
+
+> Rscript GDV_Bval_no_BIO.r
