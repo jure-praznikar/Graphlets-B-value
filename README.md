@@ -18,11 +18,12 @@ Otherwise, all chains in the asymmetric unit are selected. <br>
 * library(bio3d)  
 * library(netdist)  
 
-## **Example 1 – Biological unit 1 and crystal contacts **  
+## **Example 1 – Biological unit 1 and crystal contacts**  
 
-**_STEP 1: Crystal contacts_**  
 By default, the analysis is performed using the Biological Assembly 1 (BIOMOLECULE: 1).  
 The data about CRYSTALLOGRAPHIC SYMMETRY must be represented in the PDB file.  
+
+**_STEP 1: Crystal contacts_**  
 
 The EXAMPLE1 folder contains the pdb file “6dnl.pdb”.  
 Go to https://swift.cmbi.umcn.nl/servers/html/symshel2.html and upload the 6dnl.pdb file (from the EXAMPLE1 folder).  
@@ -62,6 +63,8 @@ Note that rescaled.pdb is only created if the standard deviation and <br>
 mean B-value of the query structure are in the range [2, 100].
 
 ## **Example 2 – Biological unit 1, no crystal contacts (i.e., cryo-EM model)**
+This example does not consider symmetry contacts (i.e., the cryo- EM model).  
+By default, the analysis is performed using the Biological Assembly 1 (BIOMOLECULE: 1).  
 
 **_STEP 1: Predict the B values by running the R script "GDV_Bval.r"_**  
 
@@ -70,9 +73,6 @@ mean B-value of the query structure are in the range [2, 100].
 or  
 
 > Rscript GDV_Bval.r 
-
-This example does not consider symmetry contacts (i.e., the cryo- EM model).  
-By default, the analysis is performed using the Biological Assembly 1 (BIOMOLECULE: 1).  
 
 The script “GDV_Bval.r” reads the file 6SK0.pdb, which is already in the EXAMPLE2 folder.  
 Then it converts the 3D protein model into a graph and calculates the Graphlet Degree Vector for each atom.  
@@ -85,7 +85,7 @@ The correlation between the predicted and PDB B-values for this particular examp
 Note that rescaled.pdb is only created if the standard deviation and  
 mean B-value of the query structure are in the range [2, 100].  
 
-## **Example 3 -  Asymmetric unit, no crystal contacts **
+## **Example 3 -  Asymmetric unit, no crystal contacts**
 This script is a slightly modified version of “Example 2”.  
 The only difference is that the script reads all the atoms of the protein   
 in the PDB file (asymmetric unit) rather than in Biological Assembly 1.   
