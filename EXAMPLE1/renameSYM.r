@@ -53,6 +53,9 @@ pdb4<-cat.pdb(pdb1,pdb3,rechain=FALSE) # merge PDB and renamed symetry atoms
 # write file
 FIXEDfile<-('renamePDB.pdb')
 write.pdb(pdb4, file=FIXEDfile)
+cat('\n')
+cat('**************** Renaming is complete. (see file renamePDB.pdb) ******************* \n')
+cat('\n')
 
 #In the renamePDB.pdb file, the atoms belonging to the crystal contacts have chain id="9".
 #The numeric name "9" was used because the original pdb file may already

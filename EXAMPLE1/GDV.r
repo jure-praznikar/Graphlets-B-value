@@ -89,4 +89,8 @@ write.table(df, file=myfile, sep=",",
 # 2 to 16, are degree of orbits (O0, O1, ..., O14)
 
 
+cat('\n')
+cat('**************** Calculation of GDV is complete. (see file 6dnl.dataGDV) ******************* \n')
+cat('\n')
+
 
