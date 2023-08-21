@@ -77,8 +77,11 @@ beta <- c(3.320838e-01,-2.475571e+00,2.981908e-01,-1.300847e+00,
 data<-as.matrix(data)
 BFPR <- beta0 + data %*% beta # predicted B-values (linear model)
 CC<-cor(BF,BFPR)
+cat('\n')
+cat('------------------------------\n')
 cat('Correlation (predicted vs pdb): ',round(CC,2),'\n')
-
+cat('------------------------------\n')
+cat('\n')
 ### write predicted BF's in to PDB file
 pdb1<-pdb
 pdb1$atom$b<-BFPR
@@ -92,3 +95,8 @@ if (mean(BF)>2 & mean(BF)<100 & sd(BF)>2 & sd(BF)<100) {
     pdb1$atom$b<-BFrescaled
     write.pdb(pdb1, file = "rescaled.pdb")
 }
+
+
+cat('\n')
+cat('**************** Prediction is complete. (see file predicted.pdb and rescaled.pdb) ******************* \n')
+cat('\n')
