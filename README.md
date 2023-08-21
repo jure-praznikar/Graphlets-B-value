@@ -12,7 +12,7 @@ Otherwise, all chains in the asymmetric unit are selected. <br>
 * install.packages("igraph")  
 * install.packages("bio3d")  
 * install.packages("netdist")  
-  If "netdist" installation does not work then try:  
+  __If "netdist" installation does not work then try:__  
 * install.packages("remotes")
 * remotes::install_github("alan-turing-institute/network-comparison")
 
