@@ -2,10 +2,10 @@
 ## 2) calculate Graphlet Degree Vector
 ## 3) predict B-values
 
-#INPUT: 6SK0.pdb
+#INPUT: 6SK0_noREMARK.pdb
 #OUTPUT: 6SK0.dataGDV, predicted.pdb, rescaled.pdb
 
-pdb<-read.pdb('6SK0.pdb')
+pdb<-read.pdb('6SK0_noREMARK.pdb')
 indsP <- atom.select(pdb, "protein") ## all chains, also "9", sym
 indsH <- atom.select(pdb, "h") 
 indsTRIM <- combine.select(indsP, indsH, operator="-")
