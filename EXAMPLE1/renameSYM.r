@@ -3,8 +3,8 @@
 ## not for "smoothing" and prediction.
 ## The renaming is necessary to distinguish between the atoms from the PDB file
 ## and the symmetry atoms/chains.
-## The usual names for the chain ID are letters,
-## so the name "9" (number) was used instead of letters.
+## Usually letters are used for the chain ID's,
+## so the (number) "9" was used instead of letters.
 
 # INPUT: 6dnl.pdb, symtry.pdb
 # OUTPUT: renamePDB.pdb
