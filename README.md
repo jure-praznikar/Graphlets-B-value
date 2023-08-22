@@ -2,7 +2,7 @@
 The components of the graphlet degree vector, which describes the complexity<br> 
 of the wiring of a given atom, can be used in a multiple linear regression model <br>
 to predict atomic displacement parameters in protein structures. <br>
-For details see:(TO DO!)<br>
+For details see: (TO DO!)<br>
 By default, Biological unit 1 is selected from the pdb file.  <br>
 Otherwise, all chains in the asymmetric unit are selected. <br> 
 
@@ -11,8 +11,6 @@ Otherwise, all chains in the asymmetric unit are selected. <br>
 **install packages**  
 * install.packages("igraph")  
 * install.packages("bio3d")  
-* install.packages("netdist")  
-  __If "netdist" installation does not work then try:__  
 * install.packages("remotes")
 * remotes::install_github("alan-turing-institute/network-comparison")
 
@@ -92,7 +90,6 @@ mean B-value of the query structure are in the range [2, 100].
 This script is a slightly modified version of “Example 2”.  
 The only difference is that the script reads all the atoms of the protein   
 in the PDB file (asymmetric unit) rather than in Biological Assembly 1.   
-
 
 > source("GDV_Bval_no_BIO.r")
 
