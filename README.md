@@ -40,7 +40,7 @@ Go to the EXAMPLE1 folder and run the R script "renameSYM.r"
 This script renames symmetry chains to the name "9".   
 Symmetry atoms/chains are used only for graphlet degree vector calculation, not for "smoothing" and prediction.  
 The renaming is necessary to distinguish between the atoms from the PDB file and the symmetry atoms/chains.  
-The usual names for the chain ID are letters, so the name "9" (number) was used instead of letters.  
+Usually letters are used for the chain ID's, so the (number) "9" was used instead of letters.    
 
 The R script "renameSYM.r" creates the file "renamePDB.pdb".   
 This file contains the renamed chains and will be used further, see step (4).  
