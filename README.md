@@ -90,6 +90,8 @@ mean B-value of the query structure are in the range [2, 100].
 This script is a slightly modified version of “Example 2”.  
 The only difference is that the script reads all the atoms of the protein   
 in the PDB file (asymmetric unit) rather than in Biological Assembly 1.   
+R script reads file 6SK0_noREMARK.pdb (it does not contain info about    
+Biological Assembly and crystallographic symmetry).
 
 > source("GDV_Bval_no_BIO.r")
 
