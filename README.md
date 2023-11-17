@@ -2,7 +2,8 @@
 The components of the graphlet degree vector, which describes the complexity<br> 
 of the wiring of a given atom, can be used in a multiple linear regression model <br>
 to predict atomic displacement parameters in protein structures. <br>
-For details see: (TO DO!)<br>
+For details see:<br>
+J. Praznikar (2023). Acta Cryst. 79, https://doi.org/10.1107/S2059798323009142 <br>
 By default, Biological unit 1 is selected from the pdb file.  <br>
 Otherwise, all chains in the asymmetric unit are selected. <br> 
 
