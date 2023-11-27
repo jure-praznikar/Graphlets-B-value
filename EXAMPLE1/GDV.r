@@ -1,4 +1,4 @@
-## Calculate the Graphlet Degree Vecotr (GDV)
+## Calculate the Graphlet Degree Vector (GDV)
 ## This file reads two pdb files: the PDB query file (6dnl.pdb) and the "renamePDB.pdb" file.
 ## The output is the file "GDV.rds" which contains the degree of orbits for each atom.
 
@@ -15,7 +15,7 @@ pdb<-trim.pdb(pdb, inds = indsTRIM)
 inds <- atom.select(pdb)
 my.atoms<-pdb$atom[inds$atom,c("x", "y", "z")]
 N<-dim(my.atoms)[1]
-# calculate distnces between all atom pairs  
+# Calculate distances between all atom pairs  
 DD<-dist(my.atoms)
 # set threshold for graph construction >> 5.0A contacts (or 7.0A)
 #threshold<-5 #Upper treshold=5.0Å
@@ -84,9 +84,9 @@ write.table(df, file=myfile, sep=",",
             eol="\n", append=FALSE,
             row.names=FALSE, col.names=FALSE)
 
-# df is of size NxM, where N is numer of atoms and M is 16
-# first column is B-values from pdb file, columns from
-# 2 to 16, are degree of orbits (O0, O1, ..., O14)
+# df is of size NxM, where N is the number of atoms and M is 16
+# the first column is B-values from pdb file, columns from
+# 2 to 16, are degrees of orbits (O0, O1, ..., O14)
 
 
 cat('\n')
