@@ -1,5 +1,5 @@
 ## 1) read PDB file, convert 3D atom model in to graph
-## 2) calculate Graphlet Degree Vector
+## 2) Calculate Graphlet Degree Vector
 ## 3) predict B-values
 
 #INPUT: 6SK0.pdb
@@ -21,9 +21,9 @@ if ( !is.null(BIO) ) {
    BF<-pdb$atom[inds$atom,"b"]
    my.atoms<-pdb$atom[inds$atom,c("x", "y", "z")]
    N<-dim(my.atoms)[1]
-   # calculate distnces between all atom pairs  
+   # Calculate distances between all atom pairs  
    DD<-dist(my.atoms)
-   # set treshold for graph construction >> 5.0A contacts (or 7.0A)
+   # set threshold for graph construction >> 5.0A contacts (or 7.0A)
    #threshold<-5 #Upper treshold=5.0Å
    threshold<-7 #Upper treshold=7.0Å
    DD[DD>threshold]<-0
@@ -60,23 +60,23 @@ if ( !is.null(BIO) ) {
                eol="\n", append=FALSE,
                row.names=FALSE, col.names=FALSE)
    
-   # df is of size NxM, where N is numer of atoms and M is 16
-   # first column is B-values from pdb file, columns from
-   # 2 to 16, are degree of orbits (O0, O1, ..., O14)
-#}
+   # df is of size NxM, where N is the number of atoms and M is 16
+   # The first column is B-values from pdb file, columns from
+   # 2 to 16, are degrees of orbits (O0, O1, ..., O14)
+
 
 ## Predict the B values
 ## The predicted B-values are written to two files:
 ##  -predicted.pdb (it contains the predicted normalized B-values)
 ##  -rescaled.pdb (it contains the predicted rescaled B-values)
 ## Note that rescaled.pdb is only created if the standard deviation and
-## mean B-value of the query structure are in the range [2, 100].
+## mean B-value of the query structure is in the range [2, 100].
 
 data<-scale(go) # Graphlet Degree Vector for each atom
 #BF<-temp[,1] 
 beta0 <- 0 # intercept is zero
-# this are regression coefficients, for details see equation (3) in
-# following publication 
+# These are regression coefficients, for details see equation (3) in
+# following publication:  J. Praznikar (2023). Acta Cryst. 79, https://doi.org/10.1107/S2059798323009142
 beta <- c(3.320838e-01,-2.475571e+00,2.981908e-01,-1.300847e+00,
           -7.121716e-01,1.173306e+00,3.489543e-01,-2.750241e-01,
           1.046642e-01,4.966259e-01,6.795167e-01,-8.367222e-02,
@@ -90,13 +90,13 @@ cat('Correlation (predicted vs pdb): ',round(CC,2),'\n')
 cat('------------------------------\n')
 cat('\n')
 
-### write predicted BF's in to PDB file
+### Write predicted BFs in to PDB file
 pdb1<-pdb
 pdb1$atom$b<-BFPR
 write.pdb(pdb1, file = "predicted.pdb")
 
-## RESCALE B-values and write predicted-rescaled BF's in to PDB file
-## first check mean B val and standard deviation of B
+## RESCALE B-values and write predicted-rescaled BFs into PDB file
+## First check mean B val and standard deviation of B
 if (mean(BF)>2 & mean(BF)<100 & sd(BF)>2 & sd(BF)<100) {
     #cat('Rescale B-values')
     BFrescaled<-BFPR*sd(BF)+mean(BF)
