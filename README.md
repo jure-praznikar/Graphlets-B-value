@@ -26,35 +26,21 @@ Otherwise, all chains in the asymmetric unit are selected. <br>
 
 By default, the analysis is performed using the Biological Assembly 1 (BIOMOLECULE: 1).  
 The data about CRYSTALLOGRAPHIC SYMMETRY must be represented in the PDB file.  
+The EXAMPLE1 folder contains the pdb file “6dnl.pdb”.
 
-**_STEP 1: Crystal contacts_**  
+**_STEP 1: Add Crystal contacts_**  
+>source("add_symm_residues.r")
 
-The EXAMPLE1 folder contains the pdb file “6dnl.pdb”.  
-Go to https://swift.cmbi.umcn.nl/servers/html/symshel2.html and upload the 6dnl.pdb file (from the EXAMPLE1 folder).  
+This R script reads 6dnl.pdb and adds crystall contacts (cutoff is 8Å). The output<br>
+is written in "6dnl_CRYST.pdb".
 
-Wait for the server to finish its work and save the output file "symtry.pdb" in the EXAMPLE1 folder.   
-There should now be two pdb files in your folder: 6dnl.pdb and symtry.pdb.   
-The symtry.pdb file contains the crystallographic contact atoms.  
+**_STEP 2: Calculate the Graphlet Degree Vecotr (GDV): run the R script "GDV.r"_**    
+>source("GDV.r")
 
-**_STEP 2: Rename symmetry chains_**     
-Go to the EXAMPLE1 folder and run the R script "renameSYM.r"  
->source("renameSYM.r")    
-
-This script renames symmetry chains to the name "9".   
-Symmetry atoms/chains are used only for graphlet degree vector calculation, not for "smoothing" and prediction.  
-The renaming is necessary to distinguish between the atoms from the PDB file and the symmetry atoms/chains.  
-Usually, letters are used for the chain ID's, so the (number) "9" was used instead of letters.    
-
-The R script "renameSYM.r" creates the file "renamePDB.pdb".   
-This file contains the renamed chains and will be used further, see step (4).  
-
-**_STEP 3: Calculate the Graphlet Degree Vecotr (GDV): run the R script "GDV.r"_**    
->source("GDV.r")  
-
-This file reads two pdb files: the PDB query file (6dnl.pdb) and the "renamePDB.pdb" file.  
+This R script reads two pdb files: the PDB query file (6dnl.pdb) and the "6dnl_CRYST.pdb" file.  
 The output is the file "GDV.rds" which contains the degree of orbits for each atom.  
 
-**_STEP 4: Predict the B values by running the R script "predict.r"_**  
+**_STEP 3: Predict the B values by running the R script "predict.r"_**  
 >source("predict.r")  
 
 The correlation between the predicted and PDB B-values for this particular example should be 0.71.<br>
