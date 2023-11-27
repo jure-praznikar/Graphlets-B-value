@@ -38,10 +38,10 @@ invisible(capture.output(pdb<-read.pdb(pdbfile))) # invisible - no messages
 idx<-atom.select(pdb,"protein")
 pdb<-trim.pdb(pdb,inds=idx)
 pdbORG<-pdb #store for later use to write final pdb file > write.pdb
-# CLEAN it > to have unique residue number over all chain's
+# CLEAN it > to have a unique residue number overall chains
 pdb<-clean.pdb(pdb, consecutive = TRUE,force.renumber = TRUE)
 pdb$atom$chain[1:length(pdb$atom$chain)]<-"9" # set chain name to "9" >> discriminate from non-symm resi.
-# select CB atoms - first stage of searching close contacts
+# select CB atoms - the first stage of searching close contacts
 idxCB<-c(which(pdb$atom$elety=="CB"),which(pdb$atom$resid=="GLY" & pdb$atom$elety=="CA"))
 # geometric center
 gc<-colMeans(pdb$atom[,c("x","y","z")])
@@ -50,7 +50,7 @@ dxyz<-numeric(3)
 dxyz[1]<-max(abs(gc[1]-pdb$atom[,c("x")]))
 dxyz[2]<-max(abs(gc[2]-pdb$atom[,c("y")]))
 dxyz[3]<-max(abs(gc[3]-pdb$atom[,c("z")]))
-# d is max distance between geometric center and the mot distant atom
+# d is max distance between the geometric center and the most distant atom
 d<-sqrt(sum(dxyz^2))
 #
 VdW<-3 # approx. two times Van der Waals radii (3Å)
@@ -99,9 +99,8 @@ b<-deg2rad(ANGLE[2]) # beta
 g<-deg2rad(ANGLE[3]) # gamma
 temp<-(cos(b)*cos(g)-cos(a))/(sin(b)*sin(g))
 a_st<-acos(temp)
-#convert CELL to orthogonal >> CELLortho
+#convert CELL to orthogonal 
 #https://www.ucl.ac.uk/~rmhajc0/frorth.pdf
-CELLortho<-vector(mode = "numeric", length = 3)
 # equation 14,15, 16, from #https://www.ucl.ac.uk/~rmhajc0/frorth.pdf
 #X <- xi*CELL[1] + yi*CELL[2]*cos(g) + zi*CELL[3]*cos(b)
 #Y <- yi*CELL[2]*sin(g) - zi*CELL[3]*sin(b)*cos(a_st)
@@ -141,7 +140,7 @@ for (i in 1:length(M)) {
                   pdb1<-trim.pdb(pdb1,resno=pdb1$atom$resno[idxCB[v1]])
                   pdb2<-trim.pdb(pdb2,resno=pdb2$atom$resno[idxCB[v2]])
                   idx2<-atom.select(pdb2)
-                  # on selected residues perform pairwise calculation for all atoms (sub set of residues)
+                  # On selected residues perform the pairwise calculation for all atoms (a subset of residues)
                   MAT <- as.matrix(pdist( t(matrix(pdb1$xyz,nrow=3)), t(matrix(pdb2$xyz,nrow=3)) ))
                   v<-which(MAT<=cutoff, arr.ind = TRUE) # cutoff
                   v<-unique(v[,2])
@@ -161,7 +160,7 @@ for (i in 1:length(M)) {
 #end_time <- Sys.time()
 #cat(end_time - start_time,'\n')
 
-#### write pdb file
+#### Write pdb file
 for ( f in 1:length(PDBlist)) {      
      #pdbORG <- cat.pdb(pdbORG,PDBlist[[f]],rechain=FALSE)
      suppressWarnings(pdbORG <- cat.pdb(pdbORG,PDBlist[[f]],rechain=FALSE))
