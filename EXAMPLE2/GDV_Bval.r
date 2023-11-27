@@ -75,7 +75,7 @@ if ( !is.null(BIO) ) {
 data<-scale(go) # Graphlet Degree Vector for each atom
 #BF<-temp[,1] 
 beta0 <- 0 # intercept is zero
-# These are regression coefficients, for details see equation (3) in
+# These are regression coefficients, for details see equation (5) in
 # following publication:  J. Praznikar (2023). Acta Cryst. 79, https://doi.org/10.1107/S2059798323009142
 beta <- c(3.320838e-01,-2.475571e+00,2.981908e-01,-1.300847e+00,
           -7.121716e-01,1.173306e+00,3.489543e-01,-2.750241e-01,
