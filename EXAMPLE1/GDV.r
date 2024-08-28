@@ -1,11 +1,11 @@
 ## Calculate the Graphlet Degree Vector (GDV)
-## This file reads two pdb files: the PDB query file (6dnl.pdb) and the "renamePDB.pdb" file.
+## This file reads two pdb files: the PDB query file (6dnl.pdb) and the "6dnl_CRYST.pdb" file.
 ## The output is the file "GDV.rds" which contains the degree of orbits for each atom.
 
-#INPUT: renamePDB.pdb, 6dnl.pdb
+#INPUT: 6dnl_CRYST.pdb and 6dnl.pdb
 #OUTPUT: 6dnl.dataGDV
 
-file <-("renamePDB.pdb")
+file <-("6dnl_CRYST.pdb")
 cat('>>> ',file,'\n')
 pdb<-read.pdb(file)
 indsP <- atom.select(pdb, "protein") ## all chains, also "9" >> crystal contacts
