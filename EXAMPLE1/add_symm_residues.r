@@ -54,7 +54,7 @@ dxyz[3]<-max(abs(gc[3]-pdb$atom[,c("z")]))
 d<-sqrt(sum(dxyz^2))
 #
 VdW<-3 # approx. two times Van der Waals radii (3Å)
-cutoff<-5+VdW # distance  = 5Å
+cutoff<-5+VdW # cutoff distance  = 8Å
 # if the distance between the centers of the two molecules is
 # more than 2*d+cutoff, then are not in contact
 dc<-2*d+cutoff
@@ -133,7 +133,7 @@ for (i in 1:length(M)) {
            #if the distance between the centers of the two molecules is more than 2*d+cutoff >> no contact
            if ( test>0.5 & test<dc ) {
               MAT <- as.matrix(pdist( xyz30[idxCB,], xyzT[idxCB,] ))
-              v<-which(MAT<=(cutoff+7), arr.ind = TRUE) # CB atoms cutoff+7Å
+              v<-which(MAT<=(cutoff+7), arr.ind = TRUE) # CB atoms cutoff+7Å = 15Å, CB-CB cutoff distance
               #v1<-unique(v[,1])
               v2<-unique(v[,2])
               if (length(v2)>=1){
