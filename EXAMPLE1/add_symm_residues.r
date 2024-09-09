@@ -137,20 +137,21 @@ for (i in 1:length(M)) {
               v1<-unique(v[,1])
               v2<-unique(v[,2])
               if (length(v2)>=1){
-                  pdb1<-trim.pdb(pdb1,resno=pdb1$atom$resno[idxCB[v1]])
+                  #pdb1<-trim.pdb(pdb1,resno=pdb1$atom$resno[idxCB[v1]])
                   pdb2<-trim.pdb(pdb2,resno=pdb2$atom$resno[idxCB[v2]])
-                  idx2<-atom.select(pdb2)
-                  # On selected residues perform the pairwise calculation for all atoms (a subset of residues)
-                  MAT <- as.matrix(pdist( t(matrix(pdb1$xyz,nrow=3)), t(matrix(pdb2$xyz,nrow=3)) ))
-                  v<-which(MAT<=cutoff, arr.ind = TRUE) # cutoff
-                  v<-unique(v[,2])
-                  if (length(v2)>=1){
-                      #cat(paste('OUT_',xi,yi,zi,'sym',i-1,'.pdb',sep=''),'\n')
-                      cat(paste('> ',xi,yi,zi,' sym ',i-1,sep=''),'\n')
-                      #write.pdb(pdb2ALL,file=paste('OUT_',xi,yi,zi,'sym',i-1,'.pdb',sep=''))
-                      pdb3<-trim.pdb(pdb2,resno=unique(pdb2$atom$resno[idx2$atom[v]]))
-                      PDBlist<-append(PDBlist,list(pdb3))
-                  }
+                  PDBlist<-append(PDBlist,list(pdb2))
+                  #idx2<-atom.select(pdb2)
+                  ## On selected residues perform the pairwise calculation for all atoms (a subset of residues)
+                  #MAT <- as.matrix(pdist( t(matrix(pdb1$xyz,nrow=3)), t(matrix(pdb2$xyz,nrow=3)) ))
+                  #v<-which(MAT<=cutoff, arr.ind = TRUE) # cutoff
+                  #v<-unique(v[,2])
+                  #if (length(v2)>=1){
+                  #    #cat(paste('OUT_',xi,yi,zi,'sym',i-1,'.pdb',sep=''),'\n')
+                  #    cat(paste('> ',xi,yi,zi,' sym ',i-1,sep=''),'\n')
+                  #    #write.pdb(pdb2ALL,file=paste('OUT_',xi,yi,zi,'sym',i-1,'.pdb',sep=''))
+                  #    pdb3<-trim.pdb(pdb2,resno=unique(pdb2$atom$resno[idx2$atom[v]]))
+                  #    PDBlist<-append(PDBlist,list(pdb3))
+                  #}
               }
            }       
        }   
