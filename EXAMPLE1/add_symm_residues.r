@@ -134,7 +134,7 @@ for (i in 1:length(M)) {
            if ( test>0.5 & test<dc ) {
               MAT <- as.matrix(pdist( xyz30[idxCB,], xyzT[idxCB,] ))
               v<-which(MAT<=(cutoff+7), arr.ind = TRUE) # CB atoms cutoff+7Å
-              v1<-unique(v[,1])
+              #v1<-unique(v[,1])
               v2<-unique(v[,2])
               if (length(v2)>=1){
                   #pdb1<-trim.pdb(pdb1,resno=pdb1$atom$resno[idxCB[v1]])
@@ -164,7 +164,8 @@ for (i in 1:length(M)) {
 #### Write pdb file
 for ( f in 1:length(PDBlist)) {      
      #pdbORG <- cat.pdb(pdbORG,PDBlist[[f]],rechain=FALSE)
-     suppressWarnings(pdbORG <- cat.pdb(pdbORG,PDBlist[[f]],rechain=FALSE))
+     #suppressWarnings(pdbORG <- cat.pdb(pdbORG,PDBlist[[f]],rechain=FALSE))
+     suppressWarnings(pdbORG <- cat.pdb(pdbORG,PDBlist[[f]],renumber=TRUE,rechain=FALSE))    
 #    invisible(capture.output(pdbORG <- cat.pdb(pdbORG,PDBlist[[f]],rechain=FALSE)))
     }
 write.pdb(pdbORG,file=outputfile)
